@@ -1,82 +1,166 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimisateur de Trajet</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <title>Optimisateur de Trajet</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            min-height: 100vh;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
+    body {
+      margin: 0;
+      background-color: #f4f6f8;
+    }
 
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
+    header {
+      background-color: #1e293b;
+      color: white;
+      padding: 16px;
+      text-align: center;
+    }
 
-        header h1 {
-            font-size: 2em;
-            font-weight: 600;
-        }
+    .container {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+    }
 
-        .main-content {
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-        }
+    /* MAP SECTION */
+    .map-container {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        #map {
-            flex: 1;
-            height: 500px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            background: #e0e0e0;
-        }
+    .map-placeholder {
+      height: 420px;
+      background-color: #dbeafe;
+      border: 2px dashed #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #1e40af;
+    }
 
-        .controls {
-            width: 320px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+    /* STATS */
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+    }
 
-        .card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
+    .stat {
+      font-size: 14px;
+    }
 
-        .card h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            font-weight: 600;
-        }
+    /* CONTROLS */
+    .controls {
+      flex: 1;
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-        .input-group {
-            margin-bottom: 15px;
-        }
+    .controls label {
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-        .input-group label
+    .controls textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .controls input,
+    .controls textarea {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* BUTTONS */
+    .btn {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .generate {
+      background-color: #38bdf8;
+      color: #082f49;
+    }
+
+    .optimize {
+      background-color: #22c55e;
+      color: #052e16;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Optimisateur de Trajet</h1>
+  </header>
+
+  <main class="container">
+
+    <!-- MAP -->
+    <section class="map-container">
+      <div class="map-placeholder">
+        MAP
+      </div>
+
+      <!-- STATS -->
+      <div class="stats">
+        <div class="stat">
+          <strong>Durée moyenne de trajet :</strong> --
+        </div>
+        <div class="stat">
+          <strong>Écart-type durée de trajet :</strong> --
+        </div>
+        <div class="stat">
+          <strong>Adresses non assignées :</strong> --
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTROLS -->
+    <aside class="controls">
+
+      <label>Points / Localisations</label>
+      <textarea placeholder="Ex : Paris, Lyon, Marseille..."></textarea>
+
+      <button class="btn generate">Générer</button>
+
+      <label>Nombre de véhicules</label>
+      <input type="number" min="1" placeholder="Ex : 5" />
+
+      <label>Temps max par véhicule</label>
+      <input type="number" min="1" placeholder="Ex : 120 (min)" />
+
+      <button class="btn optimize">Optimiser</button>
+
+    </aside>
+
+  </main>
+
+</body>
+</html>
