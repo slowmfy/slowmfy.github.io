@@ -1,159 +1,1939 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Portfolio - CHEIKH Mohamed Amine</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* Base */
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #F5F6FA; /* light gray background */
-      color: #1F3B5F; /* dark navy text */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* Header */
-    header {
-      background: #1F3B5F; /* dark navy */
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-      color: #DDE2E8; /* soft gray */
-    }
+    <meta name="description"
+        content="Portfolio de Mohamed Amine Cheikh - Étudiant M1 MIAGE et développeur informatique">
 
-    /* Profile image */
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 4px solid #3498DB; /* accent blue border */
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
+    <title>Mohamed Amine Cheikh | Portfolio</title>
 
-    /* Navigation */
-    nav {
-      text-align: center;
-      margin: 1rem 0;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #1F3B5F;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #3498DB;
-    }
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    /* Sections */
-    section {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1.5rem;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    h2 {
-      border-bottom: 2px solid #3498DB;
-      padding-bottom: 0.3rem;
-      color: #1F3B5F;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      margin: 0.5rem 0;
-    }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
 
-    /* Links in sections */
-    section a {
-      color: #3498DB;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section a:hover {
-      text-decoration: underline;
-    }
+    <style>
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #1F3B5F;
-      color: white;
-      margin-top: 2rem;
-    }
-  </style>
+        /* ==================================================
+           VARIABLES
+        ================================================== */
+
+        :root {
+            --background: #050816;
+            --background-2: #080d1f;
+
+            --card: rgba(255, 255, 255, 0.055);
+            --card-hover: rgba(255, 255, 255, 0.09);
+
+            --white: #ffffff;
+            --text: #e8edf7;
+            --muted: #94a3b8;
+
+            --blue: #38bdf8;
+            --blue-light: #7dd3fc;
+            --purple: #8b5cf6;
+            --cyan: #22d3ee;
+
+            --border: rgba(255, 255, 255, 0.10);
+
+            --radius: 20px;
+
+            --transition: 0.35s ease;
+        }
+
+
+        /* ==================================================
+           RESET
+        ================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(56, 189, 248, 0.12),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 90% 15%,
+                    rgba(139, 92, 246, 0.12),
+                    transparent 30%
+                ),
+
+                var(--background);
+
+            color: var(--text);
+
+            line-height: 1.7;
+
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        ::selection {
+            background: var(--blue);
+            color: #020617;
+        }
+
+
+        /* ==================================================
+           BACKGROUND GRID
+        ================================================== */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 55px 55px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 90%
+                );
+
+            z-index: -2;
+        }
+
+
+        /* ==================================================
+           GLOW
+        ================================================== */
+
+        .glow {
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            border-radius: 50%;
+
+            filter: blur(100px);
+
+            opacity: 0.12;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        .glow-blue {
+            background: var(--blue);
+
+            top: 20%;
+            left: -150px;
+        }
+
+        .glow-purple {
+            background: var(--purple);
+
+            top: 50%;
+            right: -150px;
+        }
+
+
+        /* ==================================================
+           NAVBAR
+        ================================================== */
+
+        nav {
+            position: fixed;
+
+            top: 18px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: min(1050px, 92%);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 12px 16px;
+
+            background: rgba(5, 8, 22, 0.72);
+
+            backdrop-filter: blur(20px);
+
+            border: 1px solid var(--border);
+
+            border-radius: 50px;
+
+            box-shadow:
+                0 15px 50px rgba(0,0,0,0.35);
+
+            z-index: 999;
+        }
+
+        .logo {
+            text-decoration: none;
+
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 1.2rem;
+
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: block;
+
+            padding: 8px 14px;
+
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 0.85rem;
+
+            border-radius: 30px;
+
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: white;
+
+            background: rgba(56,189,248,0.10);
+        }
+
+        .nav-github {
+            background: white !important;
+
+            color: #050816 !important;
+
+            font-weight: 700;
+        }
+
+        .nav-github:hover {
+            transform: translateY(-2px);
+
+            background: var(--blue-light) !important;
+        }
+
+
+        /* ==================================================
+           HERO
+        ================================================== */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                140px
+                20px
+                100px;
+
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 950px;
+        }
+
+        .status {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 8px 16px;
+
+            border: 1px solid
+                rgba(34,197,94,0.25);
+
+            border-radius: 50px;
+
+            background:
+                rgba(34,197,94,0.06);
+
+            color: #86efac;
+
+            font-size: 0.82rem;
+
+            margin-bottom: 28px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+            box-shadow:
+                0 0 15px #22c55e;
+
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(0.7);
+                opacity: 0.5;
+            }
+        }
+
+
+        /* ==================================================
+           PROFILE IMAGE
+        ================================================== */
+
+        .profile-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            padding: 5px;
+
+            background: var(--background);
+
+            border: 3px solid var(--blue);
+
+            box-shadow:
+                0 0 0 8px
+                    rgba(56,189,248,0.05),
+
+                0 0 60px
+                    rgba(56,189,248,0.25);
+        }
+
+
+        /* ==================================================
+           HERO TEXT
+        ================================================== */
+
+        .hero h1 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size:
+                clamp(3rem, 8vw, 6.5rem);
+
+            line-height: 0.98;
+
+            letter-spacing: -5px;
+
+            font-weight: 700;
+
+            margin-bottom: 25px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #ffffff 20%,
+                    #7dd3fc 50%,
+                    #a78bfa 80%
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size:
+                clamp(1.1rem, 3vw, 1.6rem);
+
+            color: var(--muted);
+
+            font-weight: 500;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h2 span {
+            color: var(--blue);
+        }
+
+        .hero-description {
+            max-width: 680px;
+
+            margin: auto;
+
+            color: var(--muted);
+
+            font-size: 1rem;
+        }
+
+
+        /* ==================================================
+           BUTTONS
+        ================================================== */
+
+        .hero-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 14px;
+
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 14px 22px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            font-size: 0.9rem;
+
+            font-weight: 600;
+
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--purple)
+                );
+
+            box-shadow:
+                0 10px 35px
+                rgba(56,189,248,0.18);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 18px 45px
+                rgba(56,189,248,0.30);
+        }
+
+        .btn-secondary {
+            color: var(--text);
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-4px);
+
+            background: var(--card-hover);
+        }
+
+
+        /* ==================================================
+           MAIN
+        ================================================== */
+
+        main {
+            width: min(1100px, 92%);
+
+            margin: auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+
+        /* ==================================================
+           SECTION TITLES
+        ================================================== */
+
+        .section-header {
+            margin-bottom: 45px;
+        }
+
+        .section-number {
+            color: var(--blue);
+
+            font-size: 0.8rem;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size:
+                clamp(2rem, 5vw, 3.2rem);
+
+            letter-spacing: -1.5px;
+
+            margin-top: 7px;
+        }
+
+        .section-description {
+            color: var(--muted);
+
+            max-width: 650px;
+
+            margin-top: 10px;
+        }
+
+
+        /* ==================================================
+           CARDS
+        ================================================== */
+
+        .glass {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.07),
+                    rgba(255,255,255,0.025)
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            backdrop-filter: blur(15px);
+
+            transition: var(--transition);
+        }
+
+        .glass:hover {
+            border-color:
+                rgba(56,189,248,0.25);
+
+            transform: translateY(-5px);
+        }
+
+
+        /* ==================================================
+           ABOUT
+        ================================================== */
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.3fr
+                0.7fr;
+
+            gap: 22px;
+        }
+
+        .about-card {
+            padding: 32px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+
+            margin-bottom: 15px;
+        }
+
+        .about-card strong {
+            color: white;
+        }
+
+        .availability {
+            margin-top: 25px;
+
+            padding: 18px;
+
+            background:
+                rgba(56,189,248,0.06);
+
+            border-left:
+                3px solid var(--blue);
+
+            border-radius: 8px;
+        }
+
+        .availability p {
+            margin: 4px 0;
+        }
+
+
+        /* ==================================================
+           STATS
+        ================================================== */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .stat {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 25px 10px;
+        }
+
+        .stat-number {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 2.4rem;
+
+            font-weight: 700;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--purple)
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--muted);
+
+            font-size: 0.78rem;
+        }
+
+
+        /* ==================================================
+           SKILLS
+        ================================================== */
+
+        .skills-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 28px;
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+
+            margin-bottom: 14px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 11px;
+
+            background:
+                rgba(255,255,255,0.055);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 8px;
+
+            color: #cbd5e1;
+
+            font-size: 0.78rem;
+        }
+
+
+        /* ==================================================
+           PROJECTS
+        ================================================== */
+
+        .projects {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .project {
+            display: flex;
+
+            flex-direction: column;
+
+            padding: 27px;
+
+            min-height: 350px;
+        }
+
+        .project-number {
+            color: var(--blue);
+
+            font-size: 0.75rem;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 20px;
+        }
+
+        .project-icon {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 20px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(56,189,248,0.15),
+                    rgba(139,92,246,0.15)
+                );
+
+            font-size: 1.5rem;
+        }
+
+        .project h3 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 1.15rem;
+
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: var(--muted);
+
+            font-size: 0.86rem;
+
+            margin-bottom: 18px;
+        }
+
+        .project .tags {
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            margin-top: auto;
+
+            color: var(--blue);
+
+            text-decoration: none;
+
+            font-size: 0.85rem;
+
+            font-weight: 700;
+        }
+
+        .project-link:hover {
+            color: white;
+        }
+
+
+        /* ==================================================
+           GITHUB CTA
+        ================================================== */
+
+        .github-box {
+            margin-top: 30px;
+
+            padding: 45px 30px;
+
+            text-align: center;
+
+            border-radius: 22px;
+
+            border:
+                1px solid
+                rgba(56,189,248,0.18);
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(56,189,248,0.10),
+                    transparent 65%
+                );
+        }
+
+        .github-box h3 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: 1.7rem;
+
+            margin-bottom: 10px;
+        }
+
+        .github-box p {
+            color: var(--muted);
+
+            max-width: 600px;
+
+            margin: 0 auto 25px;
+        }
+
+        .github-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 14px 24px;
+
+            background: white;
+
+            color: #050816;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            transition: var(--transition);
+        }
+
+        .github-button:hover {
+            transform: translateY(-4px);
+
+            background: var(--blue-light);
+
+            box-shadow:
+                0 15px 40px
+                rgba(56,189,248,0.2);
+        }
+
+
+        /* ==================================================
+           PARCOURS
+        ================================================== */
+
+        .timeline {
+            position: relative;
+
+            max-width: 800px;
+
+            margin: auto;
+
+            padding-left: 35px;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 7px;
+
+            top: 0;
+
+            bottom: 0;
+
+            width: 2px;
+
+            background:
+                linear-gradient(
+                    var(--blue),
+                    var(--purple),
+                    transparent
+                );
+        }
+
+        .timeline-item {
+            position: relative;
+
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: "";
+
+            position: absolute;
+
+            left: -34px;
+
+            top: 6px;
+
+            width: 12px;
+            height: 12px;
+
+            border-radius: 50%;
+
+            background: var(--blue);
+
+            box-shadow:
+                0 0 20px
+                rgba(56,189,248,0.7);
+        }
+
+        .timeline-date {
+            color: var(--blue);
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+        .timeline-item h3 {
+            font-family: "Space Grotesk", sans-serif;
+
+            margin: 5px 0;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+        }
+
+
+        /* ==================================================
+           CONTACT
+        ================================================== */
+
+        .contact-box {
+            padding: 70px 30px;
+
+            text-align: center;
+
+            border-radius: 25px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(56,189,248,0.10),
+                    transparent 60%
+                );
+
+            border: 1px solid var(--border);
+        }
+
+        .contact-box h2 {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size:
+                clamp(2rem, 5vw, 3.5rem);
+
+            margin-bottom: 12px;
+        }
+
+        .contact-box p {
+            max-width: 620px;
+
+            margin:
+                0 auto 30px;
+
+            color: var(--muted);
+        }
+
+        .contact-links {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        footer {
+            margin-top: 90px;
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            border-top:
+                1px solid var(--border);
+
+            color: var(--muted);
+
+            font-size: 0.85rem;
+        }
+
+        footer span {
+            color: var(--blue);
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+        ================================================== */
+
+        @media (max-width: 900px) {
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            nav {
+                top: 10px;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .nav-links {
+                width: 100%;
+
+                justify-content: center;
+            }
+
+            .nav-links a {
+                padding: 7px 8px;
+
+                font-size: 0.7rem;
+            }
+
+            .nav-github {
+                display: none !important;
+            }
+
+            .hero {
+                padding-top: 130px;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .profile-pic {
+                width: 125px;
+                height: 125px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .skills-grid,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons,
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .github-button {
+                width: 100%;
+
+                justify-content: center;
+            }
+        }
+
+    </style>
 </head>
+
+
 <body>
-  <header>
-    <img src="/aminepng.PNG" alt="Photo de Mohamed Amine Cheikh" class="profile-pic">
-    <h1>Mohamed Amine Cheikh</h1>
-    <p>Étudiant en Informatique | Développeur Backend</p>
-  </header>
 
-  <nav>
-    <a href="#about">À propos</a>
-    <a href="#skills">Compétences</a>
-    <a href="#projects">Projets</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <!-- BACKGROUND EFFECTS -->
 
-  <section id="about">
-    <h2>À propos</h2>
-    <p>Je suis étudiant en informatique à l’Université Grenoble Alpes. Passionné par le développement backend, les systèmes d’information et les technologies web, je recherche un stage pour acquérir de l’expérience professionnelle et contribuer à des projets concrets.</p>
-  </section>
+    <div class="glow glow-blue"></div>
+    <div class="glow glow-purple"></div>
 
-  <section id="skills">
-    <h2>Compétences</h2>
-    <ul>
-      <li><strong>Langages :</strong> C, Java, Assembleur</li>
-      <li><strong>Web :</strong> HTML, CSS, JavaScript, Django (Python)</li>
-      <li><strong>Bases de données :</strong> MySQL</li>
-      <li><strong>Autres :</strong> XML, Programmation Orientée Objet</li>
-    </ul>
-  </section>
 
-  <section id="projects">
-    <h2>Projets</h2>
-    <ul>
-      <li>
-        <strong>Développement et refonte du site web universitaire</strong> —
-        <a href="https://github.com/ranidzkellou/Projet-DevWeb2" target="_blank">Voir le projet</a>
-      </li>
-      <li>
-        <strong>Développement d’un site qui calcule la zakat des entreprises</strong> —
-        <a href="https://github.com/6laza/Awkaf" target="_blank">Voir le projet</a>
-      </li>
-      <li>
-        <strong>Application Java de connexion peer-to-peer</strong> —
-        <a href="https://github.com/slowmfy/Peer2peer-java-" target="_blank">Voir le projet</a>
-      </li>
-    </ul>
-  </section>
+    <!-- ==================================================
+         NAVIGATION
+    ================================================== -->
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email : <a href="mailto:Mohamed-Amine.Cheikh@etu.univ-grenoble-alpes.fr">Mohamed-Amine.Cheikh@etu.univ-grenoble-alpes.fr</a></p>
-    <p>LinkedIn : <a href="https://www.linkedin.com/in/mohamed-amine-cheikh-54395b296" target="_blank">Mon profil LinkedIn</a></p>
-    <p>GitHub : <a href="https://github.com/Slowmfy" target="_blank">Cheikh Mohamed Amine</a></p>
-  </section>
+    <nav>
 
-  <footer>
-    <p>&copy; 2025 Cheikh Mohamed Amine - Portfolio</p>
-  </footer>
+        <a href="#" class="logo">
+            MCA<span>.</span>
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#about">À propos</a>
+            </li>
+
+            <li>
+                <a href="#skills">Compétences</a>
+            </li>
+
+            <li>
+                <a href="#projects">Projets</a>
+            </li>
+
+            <li>
+                <a href="#parcours">Parcours</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+            <li>
+                <a
+                    href="https://github.com/Slowmfy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="nav-github"
+                >
+                    GitHub ↗
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ==================================================
+         HERO
+    ================================================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Disponible pour un stage
+
+            </div>
+
+
+            <div class="profile-wrapper">
+
+                <img
+                    src="aminepng.PNG"
+                    alt="Photo de Mohamed Amine Cheikh"
+                    class="profile-pic"
+                >
+
+            </div>
+
+
+            <h1>
+                Mohamed Amine<br>
+                Cheikh
+            </h1>
+
+
+            <h2>
+                Étudiant <span>M1 MIAGE</span>
+                · Développeur informatique
+            </h2>
+
+
+            <p class="hero-description">
+
+                Passionné par l'informatique et le développement,
+                je conçois des applications web et logicielles
+                tout en développant mes compétences techniques
+                à travers différents projets.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#projects"
+                    class="btn btn-primary"
+                >
+                    Découvrir mes projets
+                    →
+                </a>
+
+
+                <a
+                    href="https://github.com/Slowmfy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    GitHub ↗
+                </a>
+
+
+                <a
+                    href="#contact"
+                    class="btn btn-secondary"
+                >
+                    Me contacter
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- ==================================================
+             ABOUT
+        ================================================== -->
+
+        <section id="about">
+
+            <div class="section-header">
+
+                <span class="section-number">
+                    01 — À PROPOS
+                </span>
+
+                <h2 class="section-title">
+                    Un étudiant passionné par la tech.
+                </h2>
+
+                <p class="section-description">
+                    Je cherche constamment à apprendre,
+                    construire et progresser.
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+
+                <div class="glass about-card">
+
+                    <p>
+
+                        Je suis actuellement étudiant en
+                        <strong>Master 1 MIAGE</strong>,
+                        avec un intérêt particulier pour le
+                        développement logiciel, le développement
+                        web et les bases de données.
+
+                    </p>
+
+
+                    <p>
+
+                        Je suis actuellement à la recherche d'un
+                        <strong>stage d'une durée minimale de
+                        12 semaines</strong>, que je souhaiterais
+                        effectuer après mes examens du deuxième semestre.
+
+                    </p>
+
+
+                    <div class="availability">
+
+                        <p>
+                            <strong>Juillet & Août :</strong>
+                            disponibilité à temps plein.
+                        </p>
+
+                        <p>
+                            <strong>Dès le M2 :</strong>
+                            3 semaines en entreprise /
+                            1 semaine de cours.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats">
+
+                    <div class="glass stat">
+
+                        <span class="stat-number">
+                            M1
+                        </span>
+
+                        <span class="stat-label">
+                            MIAGE
+                        </span>
+
+                    </div>
+
+
+                    <div class="glass stat">
+
+                        <span class="stat-number">
+                            3+
+                        </span>
+
+                        <span class="stat-label">
+                            Projets
+                        </span>
+
+                    </div>
+
+
+                    <div class="glass stat">
+
+                        <span class="stat-number">
+                            8+
+                        </span>
+
+                        <span class="stat-label">
+                            Technologies
+                        </span>
+
+                    </div>
+
+
+                    <div class="glass stat">
+
+                        <span class="stat-number">
+                            ∞
+                        </span>
+
+                        <span class="stat-label">
+                            Envie d'apprendre
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             SKILLS
+        ================================================== -->
+
+        <section id="skills">
+
+            <div class="section-header">
+
+                <span class="section-number">
+                    02 — COMPÉTENCES
+                </span>
+
+                <h2 class="section-title">
+                    Mon arsenal technique.
+                </h2>
+
+                <p class="section-description">
+                    Les langages, technologies et concepts
+                    que j'utilise dans mes projets.
+                </p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+
+                <div class="glass skill-card">
+
+                    <div class="skill-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Programmation
+                    </h3>
+
+                    <div class="tags">
+
+                        <span class="tag">C</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Assembleur</span>
+                        <span class="tag">POO</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="glass skill-card">
+
+                    <div class="skill-icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        Développement Web
+                    </h3>
+
+                    <div class="tags">
+
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Django</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="glass skill-card">
+
+                    <div class="skill-icon">
+                        🗄️
+                    </div>
+
+                    <h3>
+                        Bases de données
+                    </h3>
+
+                    <div class="tags">
+
+                        <span class="tag">MySQL</span>
+                        <span class="tag">SQL</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="glass skill-card">
+
+                    <div class="skill-icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        Autres
+                    </h3>
+
+                    <div class="tags">
+
+                        <span class="tag">XML</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Réseaux</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             PROJECTS
+        ================================================== -->
+
+        <section id="projects">
+
+            <div class="section-header">
+
+                <span class="section-number">
+                    03 — PROJETS
+                </span>
+
+                <h2 class="section-title">
+                    Quelques projets.
+                </h2>
+
+                <p class="section-description">
+                    Une sélection de projets réalisés pendant
+                    mon parcours universitaire.
+                </p>
+
+            </div>
+
+
+            <div class="projects">
+
+
+                <!-- PROJECT 01 -->
+
+                <article class="glass project">
+
+                    <span class="project-number">
+                        PROJET 01
+                    </span>
+
+                    <div class="project-icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        Refonte du site web universitaire
+                    </h3>
+
+                    <p>
+
+                        Développement et refonte d'un site
+                        web universitaire dans le cadre d'un
+                        projet de développement web.
+
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://github.com/ranidzkellou/Projet-DevWeb2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        Voir le projet sur GitHub ↗
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 02 -->
+
+                <article class="glass project">
+
+                    <span class="project-number">
+                        PROJET 02
+                    </span>
+
+                    <div class="project-icon">
+                        🕌
+                    </div>
+
+                    <h3>
+                        Calcul de la Zakat des entreprises
+                    </h3>
+
+                    <p>
+
+                        Développement d'un site permettant
+                        de calculer la Zakat des entreprises
+                        à partir des données renseignées.
+
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span class="tag">Python</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://github.com/6laza/Awkaf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        Voir le projet sur GitHub ↗
+                    </a>
+
+                </article>
+
+
+                <!-- PROJECT 03 -->
+
+                <article class="glass project">
+
+                    <span class="project-number">
+                        PROJET 03
+                    </span>
+
+                    <div class="project-icon">
+                        🔗
+                    </div>
+
+                    <h3>
+                        Application Java Peer-to-Peer
+                    </h3>
+
+                    <p>
+
+                        Développement d'une application Java
+                        permettant la communication entre
+                        plusieurs pairs dans une architecture
+                        peer-to-peer.
+
+                    </p>
+
+
+                    <div class="tags">
+
+                        <span class="tag">Java</span>
+                        <span class="tag">Réseau</span>
+                        <span class="tag">P2P</span>
+
+                    </div>
+
+
+                    <a
+                        href="https://github.com/slowmfy/Peer2peer-java-"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        Voir le projet sur GitHub ↗
+                    </a>
+
+                </article>
+
+            </div>
+
+
+            <!-- GITHUB -->
+
+            <div class="github-box">
+
+                <h3>
+                    Vous voulez voir plus de projets ?
+                </h3>
+
+                <p>
+
+                    Retrouvez l'ensemble de mes projets,
+                    expérimentations et travaux directement
+                    sur mon profil GitHub.
+
+                </p>
+
+
+                <a
+                    href="https://github.com/Slowmfy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="github-button"
+                >
+
+                    <span>⌘</span>
+
+                    Visiter mon GitHub
+
+                    <span>↗</span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             PARCOURS
+        ================================================== -->
+
+        <section id="parcours">
+
+            <div class="section-header">
+
+                <span class="section-number">
+                    04 — PARCOURS
+                </span>
+
+                <h2 class="section-title">
+                    Mon parcours.
+                </h2>
+
+            </div>
+
+
+            <div class="timeline">
+
+
+                <div class="timeline-item">
+
+                    <span class="timeline-date">
+                        ACTUELLEMENT
+                    </span>
+
+                    <h3>
+                        Master 1 MIAGE
+                    </h3>
+
+                    <p>
+
+                        Formation en informatique,
+                        développement et systèmes
+                        d'information.
+
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <span class="timeline-date">
+                        PROCHAINE ÉTAPE
+                    </span>
+
+                    <h3>
+                        Stage — minimum 12 semaines
+                    </h3>
+
+                    <p>
+
+                        Recherche d'une opportunité afin
+                        de mettre mes compétences techniques
+                        en pratique dans un environnement
+                        professionnel.
+
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <span class="timeline-date">
+                        M2
+                    </span>
+
+                    <h3>
+                        Alternance
+                    </h3>
+
+                    <p>
+
+                        Rythme prévu :
+                        <strong>
+                            3 semaines en entreprise /
+                            1 semaine de cours.
+                        </strong>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             CONTACT
+        ================================================== -->
+
+        <section id="contact">
+
+            <div class="contact-box">
+
+                <span class="section-number">
+                    05 — CONTACT
+                </span>
+
+
+                <h2>
+                    Un projet ?<br>
+                    Parlons-en.
+                </h2>
+
+
+                <p>
+
+                    Je suis actuellement à la recherche
+                    d'une opportunité de stage. N'hésitez
+                    pas à me contacter pour échanger.
+
+                </p>
+
+
+                <div class="contact-links">
+
+
+                    <a
+                        href="mailto:Mohamed-Amine.Cheikh@etu.univ-grenoble-alpes.fr"
+                        class="btn btn-primary"
+                    >
+                        ✉️ Envoyer un email
+                    </a>
+
+
+                    <a
+                        href="https://www.linkedin.com/in/mohamed-amine-cheikh-54395b296"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary"
+                    >
+                        LinkedIn ↗
+                    </a>
+
+
+                    <a
+                        href="https://github.com/Slowmfy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary"
+                    >
+                        GitHub ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        <p>
+
+            © 2026
+            <span>
+                Mohamed Amine Cheikh
+            </span>
+
+            — Portfolio
+
+        </p>
+
+    </footer>
+
 </body>
+
 </html>
+```
